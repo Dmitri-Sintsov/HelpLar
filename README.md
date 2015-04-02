@@ -1,7 +1,10 @@
 # Helper classes and functions for Laravel 4.2 / 5.0
 
 ## class HelpLar\ModelsWriter
-### Emulation of Eloquent Model::firstOrCreate() for multiple models via MYSQL INSERT ON DUPLICATE KEY UPDATE
+### Emulation of Eloquent\Model::firstOrCreate() for multiple models via MYSQL INSERT ON DUPLICATE KEY UPDATE
+
+#### Usage.
+Creation of child class with custom model fields check callback.
 
     <?php namespace Pharm;
 
@@ -34,6 +37,8 @@
     }
 
 
+Usage of HelpLar\ModelsWriter for fast bufferized writing of multiple Eloquent models.
+
     $writer = ModelsWriter::create('App\\Models\\LocalCountry');
             if (count(array_diff_key($this->lang_map, $sitelinks)) === 0) {
                     if ($this->isModern($entity)) {
@@ -49,16 +54,6 @@
                                             'name' => $title,
                                             'country_id' => $country->id
                                     ]);
-                                    /*
-                                    (country, created) = Country.objects.update_or_create(
-                                            wikidata_id=int(key.lstrip('Q'))
-                                    )
-                                    LocalCountry.objects.update_or_create(
-                                            language=dj_lang, name=title,
-                                            defaults={'country': country}
-                                    )
-                                     * 
-                                     */
                             }
                     } else {
                             foreach ($this->lang_map as $wiki_lang => $dj_lang) {
@@ -73,9 +68,14 @@
 
 ## class HelpLar\AbstractModel
 Base model with useful scopes ->random() and ->searchLike()
+
 ::hashedArray() is a multi-field version of ->lists()
+
 ::cachedUpdate() is advanced version of ::firstOrCreate() with optional redis caching.
 
 ## HelpLar\sdv_debug.php
 Various functions for debug logging, including custom SQL logger.
+
+sdv_dbg('varname',$var) logs the dump of $var with method name and 'varname' output.
+sdv_log_illuminate_query() generates closure for custom SQL logger.
 
