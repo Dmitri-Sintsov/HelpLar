@@ -96,8 +96,30 @@ function sdv_except( Exception $e ) {
 		$appContext = new stdClass();
 	}
 	$appContext->debugging = true;
-	\sdv_dbg(__METHOD__,$e->getMessage());
+	sdv_dbg(__METHOD__,$e->getMessage());
 	if ( $e instanceof SdvException ) {
-		\sdv_dbg('extendedCode',$e->getExtendedCode());
+		sdv_dbg('extendedCode',$e->getExtendedCode());
 	}
+}
+
+/**
+ * // Laravel 4.2:
+ * Event::listen('illuminate.query', sdv_log_illuminate_query());
+ * // Laravel 5.0:
+ * class EventServiceProvider extends ServiceProvider {
+
+        public function boot(DispatcherContract $events) {
+                parent::boot($events);
+                $events->listen('illuminate.query', sdv_log_illuminate_query());
+        }
+ */
+
+function sdv_log_illuminate_query() {
+	return function($sql, $bindings, $time) {
+		$bindings = array_map(array(DB::connection()->getPdo(), 'quote'), $bindings);
+		// To get the full sql query with bindings inserted
+		$sql = str_replace(array('%', '?'), array('%%', '%s'), $sql);
+		$full_sql = vsprintf($sql, $bindings);
+		sdv_dbg('full_sql',$full_sql,-11);
+	};
 }
