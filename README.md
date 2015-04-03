@@ -82,6 +82,6 @@ sdv_log_illuminate_query() generates closure for custom SQL logger.
 ## HelpLar\ExtStdClass.php
 \stdClass extended with nested access to \stdClass / array properties via
 
-::hasNested() / ::getNested() / ::setNested() // ::deleteNested() and their
+::hasNested() / ::getNested() / ::setNested() / ::deleteNested() and their
 
 static counterparts with s_ prefix.
