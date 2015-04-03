@@ -71,7 +71,7 @@ Base model with useful scopes ->random() and ->searchLike()
 
 ::hashedArray() is a multi-field version of ->lists()
 
-::cachedUpdate() is advanced version of ::firstOrCreate() with optional redis caching.
+::cachedUpdate() is advanced version of ::firstOrCreate() with optional Redis caching.
 
 ## HelpLar\sdv_debug.php
 Various functions for debug logging, including custom SQL logger.
@@ -79,3 +79,9 @@ Various functions for debug logging, including custom SQL logger.
 sdv_dbg('varname',$var) logs the dump of $var with method name and 'varname' output.
 sdv_log_illuminate_query() generates closure for custom SQL logger.
 
+## HelpLar\ExtStdClass.php
+\stdClass extended with nested access to \stdClass / array properties via
+
+::hasNested() / ::getNested() / ::setNested() // ::deleteNested() and their
+
+static counterparts with s_ prefix.
