@@ -73,13 +73,7 @@ Base model with useful scopes ->random() and ->searchLike()
 
 ::cachedUpdate() is advanced version of ::firstOrCreate() with optional Redis caching.
 
-## HelpLar\sdv_debug.php
-Various functions for debug logging, including custom SQL logger.
-
-sdv_dbg('varname',$var) logs the dump of $var with method name and 'varname' output.
-sdv_log_illuminate_query() generates closure for custom SQL logger.
-
-## HelpLar\ExtStdClass.php
+## class HelpLar\ExtStdClass
 \stdClass extended with nested access to \stdClass / array properties via
 
 ::hasNested() / ::getNested() / ::setNested() / ::deleteNested() and their
@@ -88,4 +82,10 @@ static counterparts with s_ prefix.
 
 ## class HelpLar\WkPdf
 Converts html to pdf via wkhtmltopdf utility.
+
+## HelpLar\sdv_debug.php
+Various functions for debug logging, including custom SQL logger.
+
+sdv_dbg('varname',$var) logs the dump of $var with method name and 'varname' output.
+sdv_log_illuminate_query() generates closure for custom SQL logger.
 
