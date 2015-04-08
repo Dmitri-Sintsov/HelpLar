@@ -85,3 +85,7 @@ sdv_log_illuminate_query() generates closure for custom SQL logger.
 ::hasNested() / ::getNested() / ::setNested() / ::deleteNested() and their
 
 static counterparts with s_ prefix.
+
+## class HelpLar\WkPdf
+Converts html to pdf via wkhtmltopdf utility.
+
