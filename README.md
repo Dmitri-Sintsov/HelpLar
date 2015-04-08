@@ -1,5 +1,14 @@
 # Helper classes and functions for Laravel 4.2 / 5.0
 
+## Installation
+Clone into app/vendor directory then add the following lines into composer.json
+
+        "autoload": {
+                "psr-0": {
+                        "HelpLar\\": "app/vendor"
+                }
+        },
+
 ## class HelpLar\ModelsWriter
 ### Emulation of Eloquent\Model::firstOrCreate() for multiple models via MYSQL INSERT ON DUPLICATE KEY UPDATE
 
